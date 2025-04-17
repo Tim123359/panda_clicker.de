@@ -1,0 +1,178 @@
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Clicker mit Geräusch</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <button id="music-toggle" title="Musik umschalten">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+        </svg>
+      </button>
+      <h1>Panda Clicker mit Geräusch</h1>
+      <button id="settings-button" title="Einstellungen">
+        <svg viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12,8A4,4 0 1,0 16,12A4,4 0 0,0 12,8M4.93,12A7.07,7.07 0 0,1 12,4.93A7.07,7.07 0 0,1 19.07,12A7.07,7.07 0 0,1 12,19.07A7.07,7.07 0 0,1 4.93,12M2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2A10,10 0 0,0 2,12Z" />
+        </svg>
+      </button>
+    </header>
+    <div id="scoreboard">
+      <h2>Multiplayer Scoreboard</h2>
+      <ul id="scoreboard-list"></ul>
+    </div>
+    <main>
+      <div id="game">
+        <div id="counter-container">
+          <span>Clicks: </span><span id="counter">0</span>
+        </div>
+        <div id="clicker-container">
+          <!-- Clicker SVG wird hier geladen -->
+        </div>
+      </div>
+    </main>
+    <div id="settings-modal" class="modal hidden">
+      <div class="modal-content">
+        <span id="modal-close" class="close">&times;</span>
+        <div id="tab-buttons">
+          <button class="tab-button active" data-tab="shop">Shop</button>
+          <button class="tab-button" data-tab="xxl-shop">XXL Shop</button>
+          <button class="tab-button" data-tab="admin">Admin</button>
+          <button class="tab-button" data-tab="multiplayer">Multiplayer</button>
+          <button class="tab-button" data-tab="character">Charakter</button>
+        </div>
+        <div id="shop" class="tab-content active">
+          <h2>Shop</h2>
+          <div id="shop-items">
+            <div class="shop-item" data-item="autoClicker">
+              <span>
+                <span class="shop-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M12 8a4 4 0 1 0 4 4 4 4 0 0 0 -4-4zm8.93 4a7.07 7.07 0 0 1 -7.07 7.07A7.07 7.07 0 0 1 4.93 12 7.07 7.07 0 0 1 12 4.93 7.07 7.07 0 0 1 20.07 12zM2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2 10 10 0 0 0 2,12z" />
+                  </svg>
+                </span>
+                Auto Clicker - 50 Münzen
+              </span>
+              <button class="buy-button" data-item="autoClicker">Kaufen</button>
+            </div>
+            <div class="shop-item" data-item="clickBooster">
+              <span>
+                <span class="shop-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M11 21h-1l-1-4H5l7-9v6h3L11 21z"/>
+                  </svg>
+                </span>
+                Click Booster - 100 Münzen
+              </span>
+              <button class="buy-button" data-item="clickBooster">Kaufen</button>
+            </div>
+            <div class="shop-item admin-only" data-item="superAutoClicker" style="display: none;">
+              <span>
+                <span class="shop-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M12 2l2 7h7l-5.5 4L17 21l-5-3.5L7 21l1.5-8L3 9h7z"/>
+                  </svg>
+                </span>
+                Super Auto Clicker - 200 Münzen
+              </span>
+              <button class="buy-button" data-item="superAutoClicker">Kaufen</button>
+            </div>
+            <div class="shop-item" data-item="jazzMusic">
+              <span>
+                <span class="shop-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="purple" d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+                  </svg>
+                </span>
+                Jazz Background Music - 150 Münzen
+              </span>
+              <button class="buy-button" data-item="jazzMusic">Kaufen</button>
+            </div>
+            <div class="shop-item" data-item="rockMusic">
+              <span>
+                <span class="shop-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="red" d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/>
+                  </svg>
+                </span>
+                Rock Background Music - 250 Münzen
+              </span>
+              <button class="buy-button" data-item="rockMusic">Kaufen</button>
+            </div>
+          </div>
+        </div>
+        <div id="xxl-shop" class="tab-content">
+          <h2>XXL Shop</h2>
+          <div id="xxl-shop-items">
+            <div class="shop-item" data-item="thunderStrike">
+              <span>
+                <span class="shop-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M13 2L3 14h9l-1 8L21 10h-9z"/>
+                  </svg>
+                </span>
+                Thunder Strike - 500 Münzen
+              </span>
+              <button class="buy-button" data-item="thunderStrike">Kaufen</button>
+            </div>
+            <div class="shop-item" data-item="ultraBoost">
+              <span>
+                <span class="shop-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M12 2L15 8H9L12 2zm0 2l-1 3h2l-1-3zM8 10v2a4 4 0 0 0 8 0v-2H8z"/>
+                  </svg>
+                </span>
+                Ultra Boost - 800 Münzen
+              </span>
+              <button class="buy-button" data-item="ultraBoost">Kaufen</button>
+            </div>
+            <div class="shop-item" data-item="pandaEmpire">
+              <span>
+                <span class="shop-icon">
+                  <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M5 16h14v2H5z"/>
+                    <path fill="currentColor" d="M7 9l2-4 2 4 2-4 2 4v7H7z"/>
+                  </svg>
+                </span>
+                Panda Empire - 1000 Münzen
+              </span>
+              <button class="buy-button" data-item="pandaEmpire">Kaufen</button>
+            </div>
+          </div>
+        </div>
+        <div id="admin" class="tab-content">
+          <h2>Admin Modus</h2>
+          <div id="admin-login">
+            <input type="password" id="admin-pin-input" placeholder="Admin PIN eingeben">
+            <button id="admin-pin-submit">Bestätigen</button>
+            <div id="admin-error"></div>
+          </div>
+          <div id="admin-controls" style="display: none;">
+            <p>Admin Modus aktiviert!</p>
+            <button id="admin-add-coins">100 Münzen hinzufügen</button>
+          </div>
+        </div>
+        <div id="multiplayer" class="tab-content">
+          <h2>Multiplayer Raum</h2>
+          <div>
+            <label>Aktueller Raum-Code:</label>
+            <span id="current-room-code">default</span>
+          </div>
+          <div>
+            <label for="join-code-input">Beitrittscode:</label>
+            <input type="text" id="join-code-input" placeholder="Gib Raum-Code ein">
+            <button id="join-room-button">Beitreten</button>
+          </div>
+        </div>
+        <div id="character" class="tab-content">
+          <h2>Charakter Auswahl</h2>
+          <button id="panda-choice" class="choice-button">Panda Clicker</button>
+          <button id="cat-choice" class="choice-button">Katzen Clicker</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
