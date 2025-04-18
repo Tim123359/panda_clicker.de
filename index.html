@@ -1,74 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panda Clicker – Cookie Clicker inspiriert</title>
-    <link rel="stylesheet" href="style.css"> <!-- Korrigiert: styyle.css → style.css -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Emoji Clicker</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Panda Clicker</h1>
-        <button id="switch-animal-btn">Wechsle zu Katze</button>
-        <button id="shop-modal-btn" title="Shop Menü öffnen" style="margin-left: 0.7rem; font-weight: bold; background: #ffd049; color: #2d3142; border-radius: 9px; padding: 0.38em 0.8em;">
-            🛍️ Shop
-        </button>
-        <button id="admin-menu-btn" title="Admin Menü" style="margin-left: 1rem; font-weight: bold; background: #ccc; color: #2d3142; border-radius: 7px; padding: 0.34em 0.8em;">
-            ⚙️
-        </button>
-    </header>
+  <div id="game">
+    <h1 id="score">0 🍪</h1>
+    <button id="click-btn">🐶</button>
 
-    <main>
-        <div class="clicker-area">
-            <button id="animal-btn" class="animal-btn" aria-label="Panda klicken">
-                <!-- Emoji Skin wird per JS eingefügt -->
-            </button>
-            <div class="counter">
-                <span id="total-pandas">0</span> Klicks
-            </div>
-            <button class="music-btn" id="music-toggle-btn" title="Musik An/Aus">🎵 Musik</button>
-            <div class="design-options">
-                <button id="theme-default-btn">🟦 Standard</button>
-                <button id="theme-bauhaus-btn">🟨 Bauhaus</button>
-                <button id="theme-dark-btn">⬛️ Nacht</button>
-            </div>
-            <button class="bonus-btn" id="plus10-btn" title="Pro Klick +10" style="margin-top: 1em;">
-                🔥 Pro Klick +10
-            </button>
-        </div>
-    </main>
-
-    <section id="agb-section" class="agb-section">
-        <h2>AGB & Hinweise</h2>
-        <div>
-            <p>Dies ist ein Spaß-Clicker-Spiel im Cookie-Clicker-Stil. Keine echten Transaktionen.</p>
-            <p>Für Feedback und Ideen: <a href="mailto:info@pandaclicker.de">info@pandaclicker.de</a></p>
-            <p>Alle Klicks bleiben im Browser gespeichert. <strong>Bauhaus-Sound und Musik sind gemeinfrei.</strong></p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Panda Clicker &ndash; Ein kreatives Browsergame</p>
-    </footer>
-
-    <!-- Shop Modal -->
-    <div id="shop-modal" class="modal">
-        <div class="modal-content" id="shop-modal-inner">
-            <span id="close-shop-modal" class="close">&times;</span>
-            <h2>Shop</h2>
-            <ul id="shop-list">
-                <!-- Upgrades kommen hierhin -->
-            </ul>
-        </div>
+    <div id="shop">
+      <h2>Upgrades</h2>
+      <ul id="shop-list"></ul>
     </div>
+  </div>
 
-    <!-- Admin Modal mit Pin-Eingabe -->
-    <div id="admin-modal" class="modal">
-        <div class="modal-content" id="admin-modal-inner">
-            <!-- Wird dynamisch von JS ersetzt -->
-        </div>
-    </div>
-
-    <script type="module" src="main.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
