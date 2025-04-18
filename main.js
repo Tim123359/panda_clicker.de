@@ -30,7 +30,7 @@ const xlUpgrades = [
       const animalBtn = document.querySelector(".animal-btn");
       if (animalBtn) {
         animalBtn.style.transform = "scale(1.25)";
-        setTimeout(() => { if (animalBtn) animalBtn.style.transform = ""; }, 2000);
+        setTimeout(() => { animalBtn.style.transform = ""; }, 2000);
       }
     }
   },
@@ -179,7 +179,16 @@ function playClickSound() {
   };
 }
 
-// === Shop zusammenstellen ===
+// === Dummy-Funktionen ===
+function setTheme(themeName) {
+  console.log("Theme gesetzt:", themeName);
+}
+
+function updateMusicBtn() {
+  console.log("Musikbutton aktualisiert");
+}
+
+// === Shop-Logik ===
 function getFullShopList() {
   const arr = [];
   baseUpgradeDefinitions.forEach((u, i) => arr.push({ group: "base", idx: i, up: u }));
@@ -235,7 +244,6 @@ function updateShop() {
   }
 }
 
-// === Kauf-Handler ===
 function handleBuyClick(group, idx) {
   if (group === "base") buyUpgrade(idx);
   if (group === "xl") buyXLUpgrade(idx);
@@ -282,7 +290,27 @@ function buyXXLUpgrade(idx) {
   }
 }
 
-// === Hilfsfunktion zum Formatieren von Werten ===
 function formatAmount(val) {
   return `${val.toLocaleString()} 🍪`;
 }
+
+// === Klickfunktion + Loop ===
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".animal-btn");
+  const counter = document.getElementById("counter");
+
+  btn.addEventListener("click", () => {
+    state.total += state.clickValue;
+    counter.textContent = formatAmount(state.total);
+    playClickSound();
+    updateShop();
+  });
+
+  updateShop();
+
+  setInterval(() => {
+    state.total += state.autoRate;
+    counter.textContent = formatAmount(state.total);
+    updateShop();
+  }, 1000);
+});
